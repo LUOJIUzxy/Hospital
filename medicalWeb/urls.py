@@ -13,25 +13,26 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.conf.urls import url
+from django.urls import include, re_path
+#from django.conf.urls import url
 from django.contrib import admin
 from myweb.views import doctor_list
 from myweb.views import doctor_detail,reservation,home,fastlogin,normallogin,yanzheng,register,text,login,loginsend,person,search,loginsend2
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
-    url(r'^home/$',home,name = 'home'),
-    url(r'/$^',home,name="home"),
-    url(r'^department/(?P<department_id>[^/]+)/$',doctor_list,name='department'),
-    url(r'^doctors/(?P<doctor_id>[^/]+)/$',doctor_detail,name='doctor'),
-    url(r'^reservation/$',reservation,name='reservation'),
-    url(r'^personal/$',person,name='personal'),
-    url(r'^search/$',search,name='se'),
-    url(r'^text/$',text,name='te'),
-    url(r'^register/$',register,name = 'register'),
-    url(r'^yanzheng/$', yanzheng, name='yz'),
-    url(r'^log/$',login,name='login'),
-    url(r'^login_send/$', loginsend2 ,name = 'loginsend'),
-    url(r'^loginsend2/$', loginsend2 ,name = 'loginsend'),
-    url(r'^fastlogin/$', fastlogin ,name = 'fastlogin'),
-    url(r'^normallogin/$',normallogin, name='normallogin'),
+    re_path(r'^admin/', admin.site.urls),
+    re_path(r'^home/$',home,name = 'home'),
+    re_path(r'$^',home,name="home"),
+    re_path(r'^department/(?P<department_id>[^/]+)/$',doctor_list,name='department'),
+    re_path(r'^doctors/(?P<doctor_id>[^/]+)/$',doctor_detail,name='doctor'),
+    re_path(r'^reservation/$',reservation,name='reservation'),
+    re_path(r'^personal/$',person,name='personal'),
+    re_path(r'^search/$',search,name='se'),
+    re_path(r'^text/$',text,name='te'),
+    re_path(r'^register/$',register,name = 'register'),
+    re_path(r'^yanzheng/$', yanzheng, name='yz'),
+    re_path(r'^log/$',login,name='login'),
+    re_path(r'^login_send/$', loginsend2 ,name = 'loginsend'),
+    re_path(r'^loginsend2/$', loginsend2 ,name = 'loginsend'),
+    re_path(r'^fastlogin/$', fastlogin ,name = 'fastlogin'),
+    re_path(r'^normallogin/$',normallogin, name='normallogin'),
 ]
